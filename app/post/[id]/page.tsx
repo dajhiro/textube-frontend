@@ -7,7 +7,7 @@ import fs from "fs";
 import path from "path";
 
 // app/post/[id]/page.tsx
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({ params }: { params: any }) {
   const { id } = await params;
   const post = mockPosts.find((p) => String(p.id) === String(id));
 
