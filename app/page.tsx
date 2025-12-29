@@ -8,7 +8,7 @@ export default function HomePage() {
       <h2 className="text-2xl font-semibold mb-8">
         최근 게시글
       </h2>
-      <PostList posts={mockPosts} layout="list" />
+      <PostList posts={mockPosts} />
     </section>
   );
 }
