@@ -1,6 +1,6 @@
 // app/page.tsx
-import PostList from "./ui/PostList";
-import { mockPosts } from "@/mock/posts";
+import PostList from "@/app/ui/PostList";
+import { mockPosts } from "@/app/mock/posts";
 
 export default function HomePage() {
   return (

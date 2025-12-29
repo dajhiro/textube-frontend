@@ -1,7 +1,7 @@
 // app/post/[id]/page.tsx
 
 import PostDetail from "@/app/ui/PostDetail";
-import { mockPosts } from "@/mock/posts";
+import { mockPosts } from "@/app/mock/posts";
 
 import fs from "fs";
 import path from "path";
