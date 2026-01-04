@@ -1,13 +1,19 @@
-// app/post/[id]/page.tsx
-
 import PostDetail from "@/app/ui/PostDetail";
 import { mockPosts } from "@/app/mock/posts";
-
 import fs from "fs";
 import path from "path";
 
-// app/post/[id]/page.tsx
-export default async function Page({ params }: { params: any }) {
+// Generate static params for all posts at build time
+export async function generateStaticParams() {
+  return mockPosts.map((post) => ({
+    id: post.id,
+  }));
+}
+
+// Force static generation
+export const dynamic = 'force-static';
+
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const post = mockPosts.find((p) => String(p.id) === String(id));
 
@@ -18,7 +24,6 @@ export default async function Page({ params }: { params: any }) {
 
   return (
     <main>
-      {/* HTML 변환 없이 원본 텍스트(fileContent)를 바로 전달 */}
       <PostDetail post={post} content={fileContent} />
     </main>
   );

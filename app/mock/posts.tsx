@@ -8,6 +8,7 @@ export type Post = {
   category: string;
   likes: number;
   comments: number;
+  views: number;
 };
 
 export const mockPosts: Post[] = [
@@ -21,6 +22,7 @@ export const mockPosts: Post[] = [
     category: '개발',
     likes: 124,
     comments: 8,
+    views: 2847,
   },
   {
     id: "2",
@@ -32,6 +34,7 @@ export const mockPosts: Post[] = [
     category: 'UX/UI',
     likes: 89,
     comments: 5,
+    views: 1923,
   },
   {
     id: "3",
@@ -43,6 +46,7 @@ export const mockPosts: Post[] = [
     category: '디자인',
     likes: 156,
     comments: 12,
+    views: 3512,
   },
   {
     id: "4",
@@ -54,6 +58,7 @@ export const mockPosts: Post[] = [
     category: 'UX/UI',
     likes: 203,
     comments: 15,
+    views: 4156,
   },
   {
     id: "5",
@@ -65,6 +70,7 @@ export const mockPosts: Post[] = [
     category: '개발',
     likes: 178,
     comments: 9,
+    views: 3089,
   },
 ];
 
