@@ -7,7 +7,12 @@ export const size = {
 
 export const contentType = 'image/png';
 
-export default function Icon() {
+export default async function Icon() {
+  // Load Playfair Display font from Google Fonts
+  const playfairFont = await fetch(
+    new URL('https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQZNLo_U2r.ttf')
+  ).then((res) => res.arrayBuffer());
+
   return new ImageResponse(
     (
       <div
@@ -20,7 +25,7 @@ export default function Icon() {
           alignItems: 'center',
           justifyContent: 'center',
           color: 'black',
-          fontFamily: 'serif',
+          fontFamily: '"Playfair Display"',
           fontWeight: 700,
           letterSpacing: '-2px',
         }}
@@ -30,6 +35,14 @@ export default function Icon() {
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: 'Playfair Display',
+          data: playfairFont,
+          style: 'normal',
+          weight: 700,
+        },
+      ],
     }
   );
 }
