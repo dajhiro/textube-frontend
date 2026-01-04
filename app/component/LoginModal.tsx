@@ -1,18 +1,18 @@
 import { BaseModal } from "@/app/ui/BaseModal";
+import Logo from "@/app/ui/Logo";
 
 interface LoginModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-// 화살표 함수 대신 function 키워드 사용도 가능합니다.
 export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   return (
     <BaseModal isOpen={isOpen} onClose={onClose}>
       <div className="p-10 text-center">
-        <h1 className="text-3xl font-black tracking-tight text-gray-900">
-        TexTube
-        </h1>
+        <div className="flex justify-center mb-2">
+          <Logo className="h-10 w-auto text-gray-900" />
+        </div>
         <p className="mt-2 text-sm font-medium text-gray-500">
           전 세계의 자료들을 한 곳에서
         </p>

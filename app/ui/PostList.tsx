@@ -1,17 +1,17 @@
 import PostCard from './PostCard';
+import type { Post } from '../mock/posts';
 
 type PostListProps = {
   posts: Post[];
 };
 
-export default function PostList({ posts=[] }: PostListProps) {
+export default function PostList({ posts = [] }: PostListProps) {
   return (
-    <div>
+    <div className="mx-auto max-w-4xl">
       {posts.map(post => (
         <PostCard
           key={post.id}
-          title={post.title}
-          imageUrl={post.imageUrl}
+          {...post}
           href={post.id}
         />
       ))}

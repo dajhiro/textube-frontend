@@ -1,3 +1,5 @@
+import { X } from "lucide-react";
+
 interface BaseModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -13,9 +15,16 @@ export const BaseModal = ({ isOpen, onClose, children }: BaseModalProps) => {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-[400px] overflow-hidden rounded-2xl bg-white shadow-2xl"
+        className="relative w-full max-w-[400px] overflow-hidden rounded-2xl bg-white shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-1 rounded-lg hover:bg-gray-100 transition-colors"
+          aria-label="Close modal"
+        >
+          <X size={20} className="text-gray-600" />
+        </button>
         {children}
       </div>
     </div>

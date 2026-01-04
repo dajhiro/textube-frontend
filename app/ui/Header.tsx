@@ -1,31 +1,42 @@
-"use client"; // Next.js App Router를 사용 중이라면 필수입니다.
+"use client";
 
 import { useState } from "react";
+import { Menu, Upload, User } from "lucide-react";
 import LoginModal from "@/app/component/LoginModal";
+import Logo from "@/app/ui/Logo";
 
 export default function Header() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
     <>
-      <header className="w-full h-14 px-6 flex items-center justify-between border-b border-gray-200 bg-white">
-        <div className="text-lg font-semibold">
-          <a href="/">TexTube</a>
+      <header className="w-full h-14 pl-2 pr-4 md:px-6 lg:px-8 flex items-center justify-between border-b border-gray-200 bg-white">
+        <div className="flex items-center gap-2 md:gap-3">
+          <button
+            className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            aria-label="Menu"
+          >
+            <Menu size={20} className="text-gray-700" />
+          </button>
+          <a href="/" className="flex items-center">
+            <Logo className="h-8 w-auto text-gray-900" />
+          </a>
         </div>
 
-        <nav className="flex items-center gap-2 text-sm text-gray-600">
-          {/* a 태그 대신 button을 사용하는 것이 모달 제어에 더 적합합니다 */}
+        <nav className="flex items-center gap-1.5 md:gap-2 text-sm">
           <button
             onClick={() => setIsLoginOpen(true)}
-            className="p-2 rounded-lg bg-green-700 font-bold text-gray-100 hover:text-black transition-colors"
+            className="flex items-center gap-2 px-3 py-2 md:px-4 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition-colors font-medium"
           >
-            Upload
+            <Upload size={18} />
+            <span className="hidden sm:inline">Upload</span>
           </button>
           <button
             onClick={() => setIsLoginOpen(true)}
-            className="p-2 rounded-lg bg-green-700 font-bold text-gray-100 hover:text-black transition-colors"
+            className="flex items-center gap-2 px-3 py-2 md:px-4 rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors font-medium"
           >
-            Login
+            <User size={18} />
+            <span className="hidden sm:inline">Login</span>
           </button>
         </nav>
       </header>
