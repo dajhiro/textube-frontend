@@ -1,5 +1,5 @@
 import PostCard from './PostCard';
-import type { Post } from '../mock/posts';
+import type { Post } from '@lib/types/post';
 
 type PostListProps = {
   posts: Post[];

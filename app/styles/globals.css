@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  /* Background colors */
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Surface colors */
+  --surface: #ffffff;
+  --surface-hover: #f9fafb;
+
+  /* Border colors */
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+
+  /* Text colors */
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+
+  /* Button colors */
+  --btn-primary: #111827;
+  --btn-primary-hover: #1f2937;
+  --btn-primary-text: #ffffff;
+
+  /* Code block colors */
+  --code-bg: #f6f8fa;
+}
+
+.dark {
+  /* Background colors */
+  --background: #0f0f0f;
+  --foreground: #f1f1f1;
+
+  /* Surface colors */
+  --surface: #212121;
+  --surface-hover: #2a2a2a;
+
+  /* Border colors */
+  --border: #3a3a3a;
+  --border-light: #303030;
+
+  /* Text colors */
+  --text-primary: #f1f1f1;
+  --text-secondary: #aaaaaa;
+  --text-tertiary: #717171;
+
+  /* Button colors */
+  --btn-primary: #f1f1f1;
+  --btn-primary-hover: #d9d9d9;
+  --btn-primary-text: #0f0f0f;
+
+  /* Code block colors */
+  --code-bg: #161b22;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--foreground);
+}
+
+/* Markdown Styles */
+.markdown {
+  @apply mx-auto max-w-3xl;
+}
+
+.markdown h1 {
+  @apply text-2xl font-semibold text-[var(--text-primary)] tracking-tight mb-6 mt-10 first:mt-0;
+}
+
+.markdown h2 {
+  @apply text-xl font-semibold text-[var(--text-primary)] tracking-tight mt-10 mb-4 pb-2 border-b border-[var(--border)];
+}
+
+.markdown h3 {
+  @apply text-lg font-semibold text-[var(--text-primary)] tracking-tight mt-8 mb-3;
+}
+
+.markdown h4 {
+  @apply text-base font-semibold text-[var(--text-primary)] tracking-tight mt-6 mb-2;
+}
+
+.markdown h5 {
+  @apply text-sm font-semibold text-[var(--text-primary)] tracking-tight mt-6 mb-2;
+}
+
+.markdown h6 {
+  @apply text-xs font-semibold text-[var(--text-primary)] tracking-tight mt-6 mb-2;
+}
+
+.markdown p {
+  @apply text-[17px] text-[var(--text-secondary)] leading-[1.75] mb-6;
+}
+
+.markdown a {
+  @apply text-blue-600 dark:text-blue-400 no-underline hover:text-blue-700 hover:underline;
+}
+
+.markdown strong {
+  @apply font-semibold text-[var(--text-primary)];
+}
+
+.markdown em {
+  @apply italic text-[var(--text-secondary)];
+}
+
+.markdown blockquote {
+  @apply border-l-4 border-[var(--border)] pl-6 italic text-[var(--text-secondary)] bg-[var(--surface-hover)] py-2 my-6;
+}
+
+.markdown ul {
+  @apply list-disc pl-6 my-6;
+}
+
+.markdown ol {
+  @apply list-decimal pl-6 my-6;
+}
+
+.markdown li {
+  @apply text-[var(--text-secondary)] my-2 leading-relaxed;
+}
+
+.markdown img {
+  @apply rounded-xl shadow-md my-8 w-full;
+}
+
+.markdown hr {
+  @apply border-[var(--border)] my-12;
+}
+
+.markdown code {
+  @apply text-sm bg-[var(--code-bg)] text-[var(--text-primary)] px-1.5 py-0.5 rounded font-mono;
+}
+
+.markdown pre {
+  @apply bg-[var(--code-bg)] text-[var(--text-primary)] rounded-lg border border-[var(--border)] p-0 overflow-x-auto my-6;
+}
+
+.markdown pre code {
+  @apply bg-transparent text-[var(--text-primary)] p-0;
+}
+
+/* Custom aspect-ratio classes using padding-bottom trick */
+.aspect-ratio-square {
+  position: relative;
+  padding-bottom: 100%; /* 1:1 ratio */
+}
+
+.aspect-ratio-square > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .md\:aspect-ratio-video {
+    padding-bottom: 56.25%; /* 16:9 ratio */
+  }
+}
+

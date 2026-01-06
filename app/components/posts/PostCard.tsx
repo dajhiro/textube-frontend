@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import type { Post } from '../mock/posts';
+import type { Post } from '@lib/types/post';
 
 type PostCardProps = Omit<Post, 'id'> & { href: string };
 
@@ -16,7 +16,7 @@ export default function PostCard({
   href
 }: PostCardProps) {
   return (
-    <article className="border-b border-gray-200 py-8 first:pt-0">
+    <article className="border-b border-[var(--border)] py-8 first:pt-0">
       <Link
         href={`/post/${href}`}
         className="group flex gap-8 transition-opacity hover:opacity-80"
@@ -25,23 +25,23 @@ export default function PostCard({
         <div className="flex-1">
           {/* Category & Author */}
           <div className="mb-2 flex items-center gap-2 text-sm">
-            <span className="font-medium text-gray-900">{category}</span>
-            <span className="text-gray-500">·</span>
-            <span className="text-gray-600">{author}</span>
+            <span className="font-medium text-[var(--text-primary)]">{category}</span>
+            <span className="text-[var(--text-tertiary)]">·</span>
+            <span className="text-[var(--text-secondary)]">{author}</span>
           </div>
 
           {/* Title */}
-          <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 group-hover:underline md:text-2xl">
+          <h2 className="mb-2 text-xl font-bold leading-tight text-[var(--text-primary)] group-hover:underline md:text-2xl">
             {title}
           </h2>
 
           {/* Description */}
-          <p className="mb-4 line-clamp-2 text-sm text-gray-600 md:text-base">
+          <p className="mb-4 line-clamp-2 text-sm text-[var(--text-secondary)] md:text-base">
             {description}
           </p>
 
           {/* Meta info */}
-          <div className="flex items-center gap-4 text-sm text-gray-500">
+          <div className="flex items-center gap-4 text-sm text-[var(--text-tertiary)]">
             <time dateTime={date}>{date}</time>
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1">

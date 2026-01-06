@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
-import "./globals.css";
+import "@styles/globals.css";
 
-import Header from "@/app/ui/Header";
-import Footer from "@/app/ui/Footer";
+import Header from "@components/layout/Header";
+import Footer from "@components/layout/Footer";
+import { AuthProvider } from "@lib/contexts/AuthContext";
+import { ThemeProvider } from "@lib/providers/ThemeProvider";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -23,15 +25,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={playfair.variable}>
-      <body className="min-h-screen flex flex-col">
-        <Header />
+    <html lang="en" className={playfair.variable} suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col" suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            <Header />
 
-        <main className="flex-1">
-          {children}
-        </main>
+            <main className="flex-1">
+              {children}
+            </main>
 
-        <Footer />
+            <Footer />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

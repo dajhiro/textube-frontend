@@ -1,30 +1,43 @@
-import PostDetail from "@/app/ui/PostDetail";
-import { mockPosts } from "@/app/mock/posts";
-import fs from "fs";
-import path from "path";
+import PostDetail from "@components/posts/PostDetail";
+import { mapBackendPost } from "@lib/utils/postMapper";
+import type { BackendPost } from "@lib/types/post";
+import { notFound } from "next/navigation";
 
-// Generate static params for all posts at build time
-export async function generateStaticParams() {
-  return mockPosts.map((post) => ({
-    id: post.id,
-  }));
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
+async function getPost(id: string) {
+  try {
+    const res = await fetch(`${API_URL}/posts/${id}`, {
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      if (res.status === 404) return null;
+      throw new Error('Failed to fetch post');
+    }
+
+    const backendPost: BackendPost = await res.json();
+    return backendPost;
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return null;
+  }
 }
-
-// Force static generation
-export const dynamic = 'force-static';
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const post = mockPosts.find((p) => String(p.id) === String(id));
+  const backendPost = await getPost(id);
 
-  if (!post) return <div>게시글을 찾을 수 없습니다</div>;
+  if (!backendPost) {
+    notFound();
+  }
 
-  const filePath = path.join(process.cwd(), "content", `${post.id}.md`);
-  const fileContent = fs.readFileSync(filePath, "utf8");
+  // Transform to frontend format
+  const post = mapBackendPost(backendPost);
 
   return (
     <main>
-      <PostDetail post={post} content={fileContent} />
+      <PostDetail post={post} content={backendPost.content} />
     </main>
   );
 }
