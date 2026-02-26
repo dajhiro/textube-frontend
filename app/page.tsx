@@ -1,4 +1,6 @@
 // app/page.tsx
+export const runtime = 'edge';
+
 import PostList from "@components/posts/PostList";
 import { mapBackendPosts } from "@lib/utils/postMapper";
 import type { BackendPost } from "@lib/types/post";

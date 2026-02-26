@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import PostDetail from "@components/posts/PostDetail";
 import { mapBackendPost } from "@lib/utils/postMapper";
 import type { BackendPost } from "@lib/types/post";
