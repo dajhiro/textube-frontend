@@ -29,7 +29,7 @@ export default function ReadingMenu({ children }: ReadingMenuProps) {
       <DropdownMenuTrigger asChild>
         {children}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56">
+      <DropdownMenuContent align="end" className="w-56 border-black/10 dark:border-white/10 shadow-xl shadow-black/10 dark:shadow-black/30 rounded-xl">
         <DropdownMenuLabel>테마</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {themeOptions.map((option) => {

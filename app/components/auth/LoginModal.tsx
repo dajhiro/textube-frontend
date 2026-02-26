@@ -22,7 +22,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md border-black/10 dark:border-white/10 shadow-2xl shadow-black/10 dark:shadow-black/30 rounded-xl">
         <div className="p-6 text-center">
           <div className="flex justify-center mb-2">
             <Logo className="h-10 w-auto text-[var(--text-primary)]" />

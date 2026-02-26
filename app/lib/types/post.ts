@@ -45,7 +45,11 @@ export interface Post {
   title: string;
   description: string;
   imageUrl: string;
-  author: string;
+  channel: {
+    id: string;
+    name: string;
+    image?: string;
+  },
   date: string;
   category: string;
   likes: number;

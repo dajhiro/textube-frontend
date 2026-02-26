@@ -25,7 +25,7 @@ export default function ProfileMenu({ children }: ProfileMenuProps) {
       <DropdownMenuTrigger asChild>
         {children}
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuContent align="end" className="w-48 border-black/10 dark:border-white/10 shadow-xl shadow-black/10 dark:shadow-black/30 rounded-xl">
         <DropdownMenuItem onClick={handleLogout}>
           <LogOut size={18} className="mr-2" />
           로그아웃

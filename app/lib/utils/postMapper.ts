@@ -37,18 +37,24 @@ function formatDate(isoDate: string): string {
  * Map backend Post to frontend Post
  */
 export function mapBackendPost(backendPost: BackendPost): Post {
-  return {
+  const ret = {
     id: String(backendPost.id),
     title: backendPost.title,
     description: extractDescription(backendPost),
     imageUrl: backendPost.thumbnailUrl,
-    author: backendPost.user?.name || backendPost.channel?.name || 'TexTube',
+    channel: {
+      id: backendPost.channel?.id,
+      name: backendPost.channel?.name || 'TexTube',
+      image: backendPost.channel?.image,
+    },
     date: formatDate(backendPost.createdAt),
     category: backendPost.category,
     likes: backendPost.likeCount,
     comments: backendPost.commentCount,
     views: backendPost.viewCount,
   };
+  console.log(ret);
+  return ret;
 }
 
 /**

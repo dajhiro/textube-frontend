@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Menu, Upload, User, Languages } from "lucide-react";
 import LoginModal from "@components/auth/LoginModal";
+import UploadModal from "@components/upload/UploadModal";
 import Logo from "@components/layout/Logo";
 import ProfileMenu from "@components/auth/ProfileMenu";
 import ReadingMenu from "@components/theme/ReadingMenu";
@@ -10,7 +11,16 @@ import { useAuth } from "@lib/contexts/AuthContext";
 
 export default function Header() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
   const { user, isLoading } = useAuth();
+
+  const handleUploadClick = () => {
+    if (user) {
+      setIsUploadOpen(true);
+    } else {
+      setIsLoginOpen(true);
+    }
+  };
 
   return (
     <>
@@ -30,7 +40,7 @@ export default function Header() {
         <nav className="flex items-center gap-1 md:gap-2 text-sm relative">
           {/* Upload Button - Primary button with dynamic colors */}
           <button
-            onClick={() => setIsLoginOpen(true)}
+            onClick={handleUploadClick}
             className="flex items-center h-9 gap-1.5 px-4 py-2 md:px-5 md:py-2.5 rounded-full bg-[var(--surface-hover)] text-[var(--text-primary)] hover:bg-[var(--border)] transition-colors font-medium cursor-pointer text-xs md:text-sm"
           >
             <Upload size={18} className="md:w-5 md:h-5" />
@@ -89,6 +99,11 @@ export default function Header() {
       <LoginModal
         isOpen={isLoginOpen}
         onClose={() => setIsLoginOpen(false)}
+      />
+
+      <UploadModal
+        isOpen={isUploadOpen}
+        onClose={() => setIsUploadOpen(false)}
       />
     </>
   );

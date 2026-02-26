@@ -1,62 +1,149 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
 @plugin "@tailwindcss/typography";
 
-:root {
-  /* Background colors */
-  --background: #ffffff;
-  --foreground: #171717;
+/* Tailwind v4 Theme - shadcn/ui 색상 체계 */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 
-  /* Surface colors */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Background */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+
+  /* Card */
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+
+  /* Popover */
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+
+  /* Primary */
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+
+  /* Secondary */
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+
+  /* Muted */
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+
+  /* Accent */
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+
+  /* Destructive */
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+
+  /* Border / Input / Ring */
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
+
+  /* Custom - 기존 프로젝트 변수 */
   --surface: #ffffff;
   --surface-hover: #f9fafb;
-
-  /* Border colors */
-  --border: #e5e7eb;
   --border-light: #f3f4f6;
-
-  /* Text colors */
   --text-primary: #111827;
   --text-secondary: #6b7280;
   --text-tertiary: #9ca3af;
-
-  /* Button colors */
   --btn-primary: #111827;
   --btn-primary-hover: #1f2937;
   --btn-primary-text: #ffffff;
-
-  /* Code block colors */
   --code-bg: #f6f8fa;
 }
 
 .dark {
-  /* Background colors */
-  --background: #0f0f0f;
-  --foreground: #f1f1f1;
+  /* Background */
+  --background: #0a0a0a;
+  --foreground: #fafafa;
 
-  /* Surface colors */
-  --surface: #212121;
-  --surface-hover: #2a2a2a;
+  /* Card */
+  --card: #0a0a0a;
+  --card-foreground: #fafafa;
 
-  /* Border colors */
-  --border: #3a3a3a;
-  --border-light: #303030;
+  /* Popover */
+  --popover: #0a0a0a;
+  --popover-foreground: #fafafa;
 
-  /* Text colors */
-  --text-primary: #f1f1f1;
-  --text-secondary: #aaaaaa;
-  --text-tertiary: #717171;
+  /* Primary */
+  --primary: #fafafa;
+  --primary-foreground: #171717;
 
-  /* Button colors */
-  --btn-primary: #f1f1f1;
-  --btn-primary-hover: #d9d9d9;
-  --btn-primary-text: #0f0f0f;
+  /* Secondary */
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
 
-  /* Code block colors */
-  --code-bg: #161b22;
+  /* Muted */
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+
+  /* Accent */
+  --accent: #262626;
+  --accent-foreground: #fafafa;
+
+  /* Destructive */
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+
+  /* Border / Input / Ring */
+  --border: #262626;
+  --input: #262626;
+  --ring: #d4d4d4;
+
+  /* Custom - 기존 프로젝트 변수 */
+  --surface: #0a0a0a;
+  --surface-hover: #171717;
+  --border-light: #262626;
+  --text-primary: #fafafa;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #737373;
+  --btn-primary: #fafafa;
+  --btn-primary-hover: #e5e5e5;
+  --btn-primary-text: #0a0a0a;
+  --code-bg: #171717;
 }
 
 body {
-  background-color: var(--surface);
+  background-color: var(--background);
   color: var(--foreground);
 }
 
@@ -70,7 +157,7 @@ body {
 }
 
 .markdown h2 {
-  @apply text-xl font-semibold text-[var(--text-primary)] tracking-tight mt-10 mb-4 pb-2 border-b border-[var(--border)];
+  @apply text-xl font-semibold text-[var(--text-primary)] tracking-tight mt-10 mb-4 pb-2;
 }
 
 .markdown h3 {
@@ -90,7 +177,7 @@ body {
 }
 
 .markdown p {
-  @apply text-[17px] text-[var(--text-secondary)] leading-[1.75] mb-6;
+  @apply text-[17px] text-[var(--text-primary)] leading-[1.75] mb-6;
 }
 
 .markdown a {
@@ -118,7 +205,7 @@ body {
 }
 
 .markdown li {
-  @apply text-[var(--text-secondary)] my-2 leading-relaxed;
+  @apply text-[var(--text-primary)] my-2 leading-relaxed;
 }
 
 .markdown img {
@@ -161,4 +248,3 @@ body {
     padding-bottom: 56.25%; /* 16:9 ratio */
   }
 }
-

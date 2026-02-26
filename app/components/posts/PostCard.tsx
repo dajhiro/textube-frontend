@@ -8,7 +8,7 @@ export default function PostCard({
   title,
   description,
   imageUrl,
-  author,
+  channel,
   date,
   category,
   likes,
@@ -27,7 +27,7 @@ export default function PostCard({
           <div className="mb-2 flex items-center gap-2 text-sm">
             <span className="font-medium text-[var(--text-primary)]">{category}</span>
             <span className="text-[var(--text-tertiary)]">·</span>
-            <span className="text-[var(--text-secondary)]">{author}</span>
+            <span className="text-[var(--text-secondary)]">{channel.name}</span>
           </div>
 
           {/* Title */}
@@ -62,12 +62,12 @@ export default function PostCard({
         </div>
 
         {/* Right: Thumbnail */}
-        <div className="relative h-28 w-28 flex-shrink-0 overflow-hidden rounded md:h-32 md:w-32">
+        <div className="flex-shrink-0 overflow-hidden rounded">
           <Image
             src={imageUrl}
             alt={title}
-            fill
-            sizes="(max-width: 768px) 112px, 128px"
+            width={160}
+            height={120}
             className="object-cover"
           />
         </div>
